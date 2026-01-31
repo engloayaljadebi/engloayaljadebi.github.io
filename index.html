@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>الجعدبي فون | Aljadebi Phone - صيانة وبيع الإلكترونيات</title>
-    <meta name="description" content="الموقع الرسمي لمتجر الجعدبي فون (Aljadebi Phone) في صنعاء. نقدم خدمات صيانة وبرمجة الجوالات واللابتوبات، بيع الإلكترونيات، وخدمات التصميم والطباعة.">
+    <title>الجعدبي فون | Aljadebi Phone - صيانة وبيع الإلكترونيات الحديثة</title>
+    <meta name="description" content="الموقع الرسمي لمتجر الجعدبي فون (Aljadebi Phone) في صنعاء. نقدم خدمات صيانة وبرمجة الجوالات واللابتوبات، بيع الإلكترونيات الحديثة، وخدمات التصميم والطباعة.">
     <meta name="keywords" content="aljadebiphone, الجعدبي فون, صيانة جوالات صنعاء, برمجة جوالات, بيع الكترونيات, اكسسوارات, فك شفرة, تعريب, طباعة, تصميم جرافيكي">
 
     <!-- Frameworks and Libraries -->
@@ -16,15 +16,331 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-red: #e63946;
+            --secondary-red: #ff6b6b;
+            --light-red: #ffeaea;
+            --dark-bg: #1a1a1a;
+            --light-bg: #ffffff;
+            --gray-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* تحسين شريط التنقل */
+        .navbar {
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem !important;
+            margin: 0 0.2rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--primary-red);
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            border: none;
+            border-radius: 30px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+        }
+
+        /* السلايدر المحسن */
+        .hero-slider {
+            margin-top: 80px;
+        }
+
+        .slider-item {
+            height: 85vh;
+            background-size: cover !important;
+            background-position: center !important;
+            position: relative;
+        }
+
+        .slider-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(230,57,70,0.3) 100%);
+        }
+
+        .slider-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 15%;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0 20px;
+        }
+
+        /* بطاقات الخدمات */
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 40px rgba(230, 57, 70, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--light-red), white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--primary-red);
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--primary-red);
+        }
+
+        .service-card h3 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* بطاقات المنتجات */
+        .product-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
+        }
+
+        .product-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            background: white;
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        /* قسم من نحن */
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            color: var(--text-dark);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        /* قسم اتصل بنا */
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        /* الفوتر */
+        footer {
+            background: linear-gradient(135deg, var(--dark-bg), #2c2c2c);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-red);
+        }
+
+        /* تأثيرات عامة */
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* أنيميشن للظهور */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 768px) {
+            .slider-item {
+                height: 60vh;
+            }
+            
+            .slider-content {
+                padding-top: 25%;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            
+            .service-card, .product-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        /* زر العودة للأعلى */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* شريط التقدم */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--primary-red);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+    </style>
 </head>
 <body>
+    <!-- شريط التقدم -->
+    <div class="progress-bar"></div>
+
+    <!-- زر العودة للأعلى -->
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <!-- شريط التنقل العلوي -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <!-- سيتم وضع الشعار هنا -->
-                <img src="https://via.placeholder.com/150x50?text=Aljadebi+Phone" alt="الجعدبي فون" class="img-fluid">
+                <img src="https://i.imgur.com/3J8K9ZL.png" alt="الجعدبي فون" class="img-fluid">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -38,7 +354,12 @@
                     <li class="nav-item"><a class="nav-link" href="#contact">اتصل بنا</a></li>
                 </ul>
                 <div class="d-flex">
-                    <a href="tel:773634367" class="btn btn-danger"><i class="fas fa-phone-alt me-2"></i>اتصل الآن</a>
+                    <a href="https://wa.me/967773634367" class="btn btn-danger me-2">
+                        <i class="fab fa-whatsapp me-2"></i>واتساب
+                    </a>
+                    <a href="tel:773634367" class="btn btn-outline-danger">
+                        <i class="fas fa-phone-alt me-2"></i>اتصل الآن
+                    </a>
                 </div>
             </div>
         </div>
@@ -49,88 +370,257 @@
         <div id="mainSlider" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="slider-item" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop' );">
+                    <div class="slider-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2080&q=80')">
                         <div class="container">
                             <div class="slider-content text-white text-center animate__animated animate__fadeInUp">
-                                <h2 class="display-4 fw-bold mb-3">الجعدبي فون - عالمك الرقمي</h2>
-                                <p class="lead mb-4">صيانة، برمجة، وبيع أحدث الإلكترونيات في صنعاء.</p>
-                                <a href="#services" class="btn btn-danger btn-lg px-4">اكتشف خدماتنا</a>
+                                <h2 class="display-4 fw-bold mb-3">الجعدبي فون - مستقبل التكنولوجيا بين يديك</h2>
+                                <p class="lead mb-4">أحدث الجوالات، صيانة احترافية، وتقنية متطورة في قلب صنعاء</p>
+                                <a href="#products" class="btn btn-danger btn-lg px-5 py-3">
+                                    <i class="fas fa-shopping-cart me-2"></i>تصفح المنتجات
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="slider-item" style="background-image: url('https://images.unsplash.com/photo-1591370874773-670435c189d6?q=80&w=1974&auto=format&fit=crop' );">
+                    <div class="slider-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=2080&q=80')">
                         <div class="container">
                             <div class="slider-content text-white text-center animate__animated animate__fadeInUp">
-                                <h2 class="display-4 fw-bold mb-3">صيانة احترافية وسريعة</h2>
-                                <p class="lead mb-4">نصلح جميع أنواع أعطال الجوالات واللابتوبات بأيدي خبراء.</p>
-                                <a href="#contact" class="btn btn-outline-light btn-lg px-4">تواصل معنا</a>
+                                <h2 class="display-4 fw-bold mb-3">صيانة فورية بضمان</h2>
+                                <p class="lead mb-4">فريق خبراء لإصلاح جميع أنواع أعطال الجوالات واللابتوبات</p>
+                                <a href="#contact" class="btn btn-outline-light btn-lg px-5 py-3">
+                                    <i class="fas fa-calendar-alt me-2"></i>احجز موعد الآن
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
-            <button class="carousel-control-next" type="button" data-bs-target="#mainSlider" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainSlider" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
     </section>
 
     <!-- قسم الخدمات -->
-    <section class="py-5" id="services">
+    <section class="py-5" id="services" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
         <div class="container">
-            <div class="section-header text-center">
+            <div class="section-header text-center animate-on-scroll">
                 <h2 class="fw-bold">خدماتنا المتكاملة</h2>
                 <p class="text-muted">كل ما تحتاجه في عالم التقنية تحت سقف واحد</p>
-                <div class="divider mx-auto bg-danger"></div>
+                <div class="divider mx-auto"></div>
             </div>
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6"><div class="service-card"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><h3>خدمات الجوالات</h3><p>فك شفرة، تعريب، تفعيل شبكات، تحديث أنظمة.</p></div></div>
-                <div class="col-lg-4 col-md-6"><div class="service-card"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>الصيانة</h3><p>إصلاح جوالات ولابتوبات (شاشات، بطاريات، أعطال).</p></div></div>
-                <div class="col-lg-4 col-md-6"><div class="service-card"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><h3>تنصيب البرامج</h3><p>تثبيت ويندوز، ماك، وبرامج للكمبيوتر والجوالات.</p></div></div>
-                <div class="col-lg-4 col-md-6"><div class="service-card"><div class="service-icon"><i class="fas fa-palette"></i></div><h3>التصميم الجرافيكي</h3><p>تصميم شعارات، هويات تجارية، بوسترات، وسوشيال ميديا.</p></div></div>
-                <div class="col-lg-4 col-md-6"><div class="service-card"><div class="service-icon"><i class="fas fa-print"></i></div><h3>الطباعة والتصوير</h3><p>طباعة مستندات، صور، تصوير وثائق، وتغليف حراري.</p></div></div>
-                <div class="col-lg-4 col-md-6"><div class="service-card"><div class="service-icon"><i class="fas fa-hdd"></i></div><h3>نسخ وتحميل</h3><p>نسخ أفلام، مسلسلات، وأنظمة تشغيل على فلاش أو هارد.</p></div></div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt fa-2x"></i>
+                        </div>
+                        <h3>خدمات الجوالات المتطورة</h3>
+                        <p>فك شفرة، تعريب، تفعيل شبكات، تحديث أنظمة، إصلاح البرمجيات</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tools fa-2x"></i>
+                        </div>
+                        <h3>الصيانة الشاملة</h3>
+                        <p>إصلاح جوالات ولابتوبات، تغيير شاشات، بطاريات، وأعطال الهاردوير</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code fa-2x"></i>
+                        </div>
+                        <h3>تنصيب البرامج والنظم</h3>
+                        <p>تثبيت ويندوز، ماك، برامج متخصصة، وبرامج الجوالات الحديثة</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-palette fa-2x"></i>
+                        </div>
+                        <h3>التصميم الجرافيكي</h3>
+                        <p>تصميم شعارات، هويات تجارية، بوسترات، وسوشيال ميديا احترافية</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-print fa-2x"></i>
+                        </div>
+                        <h3>الطباعة والتصوير</h3>
+                        <p>طباعة مستندات، صور، تصوير وثائق، وتغليف حراري عالي الجودة</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate-on-scroll">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-hdd fa-2x"></i>
+                        </div>
+                        <h3>نسخ وتحميل المحتوى</h3>
+                        <p>نسخ أفلام، مسلسلات، وأنظمة تشغيل على فلاش أو هارد ديسك</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- قسم المنتجات (كمثال) -->
-    <section class="py-5 bg-light" id="products">
+    <!-- قسم المنتجات الحديثة -->
+    <section class="py-5" id="products" style="background-color: var(--gray-bg);">
         <div class="container">
-            <div class="section-header text-center">
-                <h2 class="fw-bold">أحدث المنتجات المتوفرة</h2>
-                <p class="text-muted">تصفح تشكيلتنا من الجوالات والإكسسوارات عالية الجودة</p>
-                <div class="divider mx-auto bg-danger"></div>
+            <div class="section-header text-center animate-on-scroll">
+                <h2 class="fw-bold">أحدث المنتجات التقنية</h2>
+                <p class="text-muted">تصفح تشكيلتنا من الجوالات والإكسسوارات الحديثة</p>
+                <div class="divider mx-auto"></div>
             </div>
             <div class="row">
-                <!-- منتج 1 -->
-                <div class="col-md-3 mb-4"><div class="card product-card h-100"><img src="https://via.placeholder.com/300x300?text=iPhone+15" class="card-img-top" alt="آيفون"><div class="card-body"><h5 class="card-title">جوالات حديثة</h5><p class="card-text">أحدث موديلات آيفون وسامسونج وغيرها.</p></div></div></div>
-                <!-- منتج 2 -->
-                <div class="col-md-3 mb-4"><div class="card product-card h-100"><img src="https://via.placeholder.com/300x300?text=Headphones" class="card-img-top" alt="سماعات"><div class="card-body"><h5 class="card-title">سماعات</h5><p class="card-text">سماعات سلكية ولاسلكية بجودة صوت عالية.</p></div></div></div>
-                <!-- منتج 3 -->
-                <div class="col-md-3 mb-4"><div class="card product-card h-100"><img src="https://via.placeholder.com/300x300?text=Chargers" class="card-img-top" alt="شواحن"><div class="card-body"><h5 class="card-title">شواحن وأسلاك</h5><p class="card-text">شواحن أصلية سريعة وأسلاك متينة.</p></div></div></div>
-                <!-- منتج 4 -->
-                <div class="col-md-3 mb-4"><div class="card product-card h-100"><img src="https://via.placeholder.com/300x300?text=Accessories" class="card-img-top" alt="اكسسوارات"><div class="card-body"><h5 class="card-title">إكسسوارات متنوعة</h5><p class="card-text">كفرات، حمايات شاشة، وبور بانك.</p></div></div></div>
+                <!-- منتج 1 - آيفون حديث -->
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1632661674596-df8be070a6c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="card-img-top" alt="iPhone 15 Pro Max">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">الأكثر مبيعاً</span>
+                            <h5 class="card-title">آيفون 15 برو ماكس</h5>
+                            <p class="card-text text-muted">أحدث إصدارات آيفون بشاشة ديناميكية وتصوير احترافي</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-danger">ريال 5,299</span>
+                                <button class="btn btn-sm btn-outline-danger">تفاصيل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 2 - سامسونج حديث -->
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="card-img-top" alt="Samsung Galaxy S24">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">جديد</span>
+                            <h5 class="card-title">سامسونج جالكسي S24</h5>
+                            <p class="card-text text-muted">هاتف ذكي بشاشة AMOLED ومميزات الذكاء الاصطناعي</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-danger">ريال 4,199</span>
+                                <button class="btn btn-sm btn-outline-danger">تفاصيل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 3 - سماعات حديثة -->
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1585298728723-e0f7dfe6b4a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="card-img-top" alt="Wireless Earbuds">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">عرض خاص</span>
+                            <h5 class="card-title">سماعات AirPods Pro</h5>
+                            <p class="card-text text-muted">سماعات لاسلكية بإلغاء ضوضاء نشط وجودة صوت ممتازة</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-danger">ريال 899</span>
+                                <button class="btn btn-sm btn-outline-danger">تفاصيل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- منتج 4 - ساعة ذكية -->
+                <div class="col-lg-3 col-md-6 mb-4 animate-on-scroll">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             class="card-img-top" alt="Smart Watch">
+                        <div class="card-body">
+                            <span class="badge bg-danger mb-2">شحن مجاني</span>
+                            <h5 class="card-title">ساعة أبل ووتش</h5>
+                            <p class="card-text text-muted">ساعة ذكية بميزات متطورة لتتبع الصحة واللياقة البدنية</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-danger">ريال 1,499</span>
+                                <button class="btn btn-sm btn-outline-danger">تفاصيل</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4 animate-on-scroll">
+                <a href="#" class="btn btn-danger btn-lg px-5">
+                    <i class="fas fa-eye me-2"></i>عرض جميع المنتجات
+                </a>
             </div>
         </div>
     </section>
 
     <!-- قسم من نحن -->
-    <section class="py-5" id="about">
+    <section class="py-5" id="about" style="background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0"><img src="https://images.unsplash.com/photo-1527433823292-3b3854402138?q=80&w=1974&auto=format&fit=crop" class="img-fluid rounded-3 shadow" alt="عن المتجر"></div>
-                <div class="col-lg-6">
-                    <div class="section-header mb-4">
-                        <h2 class="fw-bold">لماذا تختار الجعدبي فون؟</h2>
-                        <div class="divider bg-danger"></div>
+                <div class="col-lg-6 mb-4 mb-lg-0 animate-on-scroll">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                             class="img-fluid rounded-3 shadow-lg" alt="عن المتجر">
+                        <div class="position-absolute bottom-0 start-0 bg-danger text-white p-3 m-3 rounded-3">
+                            <h4 class="mb-0">+5000</h4>
+                            <small>عميل راضٍ</small>
+                        </div>
                     </div>
-                    <p class="lead">نحن أكثر من مجرد متجر، نحن شريكك التقني الموثوق.</p>
-                    <p>انطلق "الجعدبي فون" من شغف حقيقي بعالم التكنولوجيا ورغبة في تقديم حلول متكاملة وموثوقة في قلب صنعاء. نؤمن بأن التكنولوجيا يجب أن تكون سهلة ومتاحة للجميع، ونسعى كل يوم لتحقيق ذلك.</p>
-                    <div class="row mt-4">
-                        <div class="col-md-6 mb-3"><div class="d-flex align-items-center"><div class="bg-danger text-white rounded-circle p-3 me-3"><i class="fas fa-shield-alt fa-2x"></i></div><div><h5 class="mb-1">خبرة موثوقة</h5><p class="mb-0">فريق من الخبراء في الصيانة والبرمجة.</p></div></div></div>
-                        <div class="col-md-6 mb-3"><div class="d-flex align-items-center"><div class="bg-danger text-white rounded-circle p-3 me-3"><i class="fas fa-concierge-bell fa-2x"></i></div><div><h5 class="mb-1">خدمة متكاملة</h5><p class="mb-0">كل ما تحتاجه تحت سقف واحد.</p></div></div></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-header mb-4 animate-on-scroll">
+                        <h2 class="fw-bold">لماذا تختار الجعدبي فون؟</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <p class="lead mb-4 animate-on-scroll">نحن أكثر من مجرد متجر، نحن شريكك التقني الموثوق في رحلتك الرقمية.</p>
+                    <p class="animate-on-scroll">انطلق "الجعدبي فون" من شغف حقيقي بعالم التكنولوجيا ورغبة في تقديم حلول متكاملة وموثوقة في قلب صنعاء. نؤمن بأن التكنولوجيا يجب أن تكون سهلة ومتاحة للجميع، ونسعى كل يوم لتحقيق ذلك من خلال فريق من الخبراء المتخصصين.</p>
+                    
+                    <div class="row mt-5">
+                        <div class="col-md-6 mb-4 animate-on-scroll">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-danger text-white rounded-3 p-3 me-3">
+                                    <i class="fas fa-shield-alt fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">ضمان الجودة</h5>
+                                    <p class="mb-0 text-muted">نقدم ضمانًا على جميع خدماتنا ومنتجاتنا لمدة عام كامل.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4 animate-on-scroll">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-danger text-white rounded-3 p-3 me-3">
+                                    <i class="fas fa-bolt fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">خدمة سريعة</h5>
+                                    <p class="mb-0 text-muted">صيانة فورية خلال 24-48 ساعة لأغلب الأعطال.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4 animate-on-scroll">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-danger text-white rounded-3 p-3 me-3">
+                                    <i class="fas fa-headset fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">دعم فني متكامل</h5>
+                                    <p class="mb-0 text-muted">فريق دعم فني متاح على مدار الساعة للإجابة على استفساراتك.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4 animate-on-scroll">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-danger text-white rounded-3 p-3 me-3">
+                                    <i class="fas fa-truck fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-2">توصيل مجاني</h5>
+                                    <p class="mb-0 text-muted">توصيل مجاني داخل صنعاء للمشتريات فوق 500 ريال.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -138,35 +628,200 @@
     </section>
 
     <!-- قسم اتصل بنا -->
-    <section class="py-5 bg-light" id="contact">
+    <section class="py-5" id="contact" style="background-color: var(--gray-bg);">
         <div class="container">
-            <div class="section-header text-center"><h2 class="fw-bold">تواصل معنا</h2><p class="text-muted">نسعد بخدمتكم! تفضل بزيارتنا أو تواصل معنا.</p><div class="divider mx-auto bg-danger"></div></div>
+            <div class="section-header text-center animate-on-scroll">
+                <h2 class="fw-bold">تواصل معنا</h2>
+                <p class="text-muted">نسعد بخدمتكم! تفضل بزيارتنا أو تواصل معنا عبر أي من الوسائل التالية</p>
+                <div class="divider mx-auto"></div>
+            </div>
             <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="col-lg-6 mb-4 mb-lg-0 animate-on-scroll">
                     <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-start mb-4"><div class="contact-icon bg-danger text-white rounded-circle me-3"><i class="fas fa-map-marker-alt"></i></div><div><h5 class="mb-1">العنوان</h5><p class="mb-0">صنعاء - عصر - شارع التوفير هايبر</p></div></div>
-                            <div class="d-flex align-items-start mb-4"><div class="contact-icon bg-danger text-white rounded-circle me-3"><i class="fas fa-phone-alt"></i></div><div><h5 class="mb-1">الهواتف</h5><p class="mb-0"><a href="tel:773634367" class="text-decoration-none text-dark">773634367</a>  
-<a href="tel:783044000" class="text-decoration-none text-dark">783044000</a></p></div></div>
-                            <div class="d-flex align-items-start mb-4"><div class="contact-icon bg-danger text-white rounded-circle me-3"><i class="fas fa-envelope"></i></div><div><h5 class="mb-1">البريد الإلكتروني</h5><p class="mb-0"><a href="mailto:aljadebiphone@gmail.com" class="text-decoration-none text-dark">aljadebiphone@gmail.com</a></p></div></div>
+                        <div class="card-body p-5">
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-2">العنوان</h5>
+                                    <p class="mb-0 text-muted">صنعاء - عصر - شارع التوفير هايبر<br>بجوار بنك التضامن</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-2">الهواتف</h5>
+                                    <p class="mb-0">
+                                        <a href="tel:773634367" class="text-decoration-none text-danger fw-bold">773634367</a>
+                                        <br>
+                                        <a href="tel:783044000" class="text-decoration-none text-danger fw-bold">783044000</a>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-2">البريد الإلكتروني</h5>
+                                    <p class="mb-0">
+                                        <a href="mailto:aljadebiphone@gmail.com" class="text-decoration-none text-danger">
+                                            aljadebiphone@gmail.com
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <h5 class="mb-2">ساعات العمل</h5>
+                                    <p class="mb-0 text-muted">
+                                        الأحد - الخميس: 9:00 ص - 9:00 م<br>
+                                        الجمعة: 3:00 م - 9:00 م<br>
+                                        السبت: 9:00 ص - 9:00 م
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mt-4">
+                                <a href="https://wa.me/967773634367" class="btn btn-danger me-3">
+                                    <i class="fab fa-whatsapp me-2"></i>واتساب
+                                </a>
+                                <a href="https://www.facebook.com/aljadebiphone" class="btn btn-outline-danger me-3">
+                                    <i class="fab fa-facebook me-2"></i>فيسبوك
+                                </a>
+                                <a href="https://www.instagram.com/aljadebiphone" class="btn btn-outline-danger">
+                                    <i class="fab fa-instagram me-2"></i>إنستغرام
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6"><div class="map-container rounded-3 shadow-sm overflow-hidden"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.008888888889!2d44.20666666666666!3d15.354166666666666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDIxJzE1LjAiTiA0NMKwMTInMjQuMCJF!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div></div>
+                
+                <div class="col-lg-6 animate-on-scroll">
+                    <div class="map-container shadow-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.008888888889!2d44.20666666666666!3d15.354166666666666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDIxJzE1LjAiTiA0NMKwMTInMjQuMCJF!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- تذييل الصفحة -->
-    <footer class="bg-dark text-white pt-5 pb-3">
+    <footer class="pt-5 pb-3">
         <div class="container text-center">
-            <h5 class="text-danger mb-4">الجعدبي فون | Aljadebi Phone</h5>
-            <p>&copy; 2026 جميع الحقوق محفوظة.</p>
-            <p>تصميم وتطوير: <a href="https://github.com/engloayaljadebi" class="text-danger text-decoration-none">لؤي الجعدبي</a></p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h4 class="text-danger mb-4">الجعدبي فون | Aljadebi Phone</h4>
+                    <p class="text-white mb-4">نقدم لك الأفضل في عالم التكنولوجيا مع خدمة لا تقبل المنافسة</p>
+                    
+                    <div class="d-flex justify-content-center mb-4">
+                        <a href="#" class="text-white mx-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-white mx-3"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" class="text-white mx-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-white mx-3"><i class="fab fa-youtube fa-2x"></i></a>
+                    </div>
+                    
+                    <div class="border-top border-secondary pt-4">
+                        <p class="text-white-50 mb-2">&copy; 2026 جميع الحقوق محفوظة لـ الجعدبي فون</p>
+                        <p class="text-white-50">تصميم وتطوير: <a href="https://github.com/engloayaljadebi" class="text-danger text-decoration-none">لؤي الجعدبي</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript المخصص -->
+    <script>
+        // أنيميشن للظهور عند التمرير
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // شريط التقدم
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+
+            // زر العودة للأعلى
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        // تأثيرات للسلايدر
+        const mainSlider = document.querySelector('#mainSlider');
+        if (mainSlider) {
+            mainSlider.addEventListener('slide.bs.carousel', function () {
+                const activeSlide = this.querySelector('.carousel-item.active .slider-content');
+                activeSlide.classList.remove('animate__fadeInUp');
+                void activeSlide.offsetWidth; // إعادة التدفق
+                activeSlide.classList.add('animate__fadeInUp');
+            });
+        }
+
+        // تأثيرات التنقل الناعم
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // إضافة تأثير للبطاقات عند التمرير فوقها
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.service-card, .product-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.4s ease';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
