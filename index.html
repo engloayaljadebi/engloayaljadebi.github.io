@@ -7,13 +7,12 @@
     <!-- SEO Meta Tags -->
     <title>الجعدبي فون | Aljadebi Phone - صيانة وبيع الإلكترونيات</title>
     <meta name="description" content="الموقع الرسمي لمتجر الجعدبي فون (Aljadebi Phone) في صنعاء. نقدم خدمات صيانة وبرمجة الجوالات واللابتوبات، بيع الإلكترونيات، وخدمات التصميم والطباعة.">
-    <meta name="keywords" content="aljadebiphone, الجعدبي فون, صيانة جوالات صنعاء, برمجة جوالات, بيع الكترونيات, اكسسوارات, فك شفرة, تعريب, طباعة, تصميم جرافيكي">
 
     <!-- Frameworks and Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     
     <style>
         :root {
@@ -62,10 +61,6 @@
             transition: transform 0.3s ease;
         }
 
-        .navbar-brand:hover img {
-            transform: scale(1.05);
-        }
-
         .nav-link {
             color: var(--text-dark) !important;
             font-weight: 600;
@@ -111,10 +106,9 @@
         .btn-call:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(227, 24, 55, 0.5);
-            background: var(--dark-red);
         }
 
-        /* ===== السلايدر الرئيسي ===== */
+        /* ===== قسم البطل ===== */
         .hero-section {
             background: var(--pure-white);
             min-height: 100vh;
@@ -122,7 +116,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
+            padding: 100px 0 50px;
         }
 
         .hero-section::before {
@@ -160,7 +154,7 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 900;
             color: var(--text-dark);
             line-height: 1.2;
@@ -172,20 +166,8 @@
             position: relative;
         }
 
-        .hero-title span::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            right: 0;
-            width: 100%;
-            height: 15px;
-            background: rgba(227, 24, 55, 0.2);
-            z-index: -1;
-            border-radius: 5px;
-        }
-
         .hero-description {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
             line-height: 1.8;
             margin-bottom: 35px;
@@ -226,149 +208,58 @@
             transform: translateY(-5px);
         }
 
-        .hero-image {
+        /* ===== عرض الجوالات المتحرك في البطل ===== */
+        .hero-phones-showcase {
             position: relative;
             z-index: 2;
+            perspective: 1500px;
         }
 
-        .hero-phone-container {
+        .phones-orbit {
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
+            height: 500px;
+            transform-style: preserve-3d;
+            animation: slowRotate 30s linear infinite;
         }
 
-        .hero-phone-main {
-            width: 320px;
-            height: auto;
-            border-radius: 40px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            animation: float 3s ease-in-out infinite;
-            position: relative;
-            z-index: 3;
+        @keyframes slowRotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
         }
 
-        .hero-phone-side {
-            width: 250px;
-            height: auto;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        .orbit-phone {
             position: absolute;
-            animation: floatSide 3s ease-in-out infinite;
-            animation-delay: 0.5s;
-        }
-
-        .hero-phone-left {
-            left: -80px;
-            top: 50px;
-            z-index: 2;
-            opacity: 0.8;
-        }
-
-        .hero-phone-right {
-            right: -80px;
-            top: 50px;
-            z-index: 2;
-            opacity: 0.8;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes floatSide {
-            0%, 100% { transform: translateY(0) rotate(5deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-
-        .hero-decoration {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--gradient-red);
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
+            width: 150px;
+            height: auto;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: all 0.5s ease;
         }
 
-        /* ===== مميزات سريعة ===== */
-        .features-strip {
-            background: var(--pure-white);
-            padding: 60px 0;
-            position: relative;
-            z-index: 10;
-            margin-top: -50px;
-        }
-
-        .feature-box {
-            background: var(--pure-white);
+        .orbit-phone img {
+            width: 100%;
             border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
-            border: 1px solid var(--light-gray);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
-        .feature-box:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-medium);
-            border-color: transparent;
-        }
+        .orbit-phone:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(200px); }
+        .orbit-phone:nth-child(2) { transform: translate(-50%, -50%) rotateY(72deg) translateZ(200px); }
+        .orbit-phone:nth-child(3) { transform: translate(-50%, -50%) rotateY(144deg) translateZ(200px); }
+        .orbit-phone:nth-child(4) { transform: translate(-50%, -50%) rotateY(216deg) translateZ(200px); }
+        .orbit-phone:nth-child(5) { transform: translate(-50%, -50%) rotateY(288deg) translateZ(200px); }
 
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(227, 24, 55, 0.1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-box:hover .feature-icon {
-            background: var(--gradient-red);
-        }
-
-        .feature-icon i {
-            font-size: 1.8rem;
-            color: var(--primary-red);
-            transition: all 0.3s ease;
-        }
-
-        .feature-box:hover .feature-icon i {
-            color: var(--pure-white);
-        }
-
-        .feature-box h4 {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-        }
-
-        .feature-box p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* ===== قسم الخدمات ===== */
-        .services-section {
+        /* ===== قسم العلامات التجارية ===== */
+        .brands-section {
             background: var(--light-gray);
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .section-badge {
@@ -394,6 +285,395 @@
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
+        }
+
+        /* ===== تبويبات العلامات التجارية ===== */
+        .brand-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .brand-tab {
+            background: var(--pure-white);
+            border: 2px solid var(--light-gray);
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .brand-tab:hover,
+        .brand-tab.active {
+            background: var(--gradient-red);
+            color: var(--pure-white);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(227, 24, 55, 0.3);
+        }
+
+        .brand-tab img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        /* ===== معرض الجوالات ثلاثي الأبعاد ===== */
+        .phones-gallery {
+            display: none;
+        }
+
+        .phones-gallery.active {
+            display: block;
+        }
+
+        .swiper-phones {
+            padding: 50px 0 80px;
+        }
+
+        /* ===== كارت الجوال ثلاثي الأبعاد ===== */
+        .phone-3d-card {
+            perspective: 2000px;
+            height: 500px;
+        }
+
+        .phone-3d-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .phone-3d-card.flipped .phone-3d-inner {
+            transform: rotateY(180deg);
+        }
+
+        .phone-front,
+        .phone-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .phone-front {
+            background: linear-gradient(145deg, var(--pure-white) 0%, var(--light-gray) 100%);
+        }
+
+        .phone-back {
+            background: var(--gradient-red);
+            transform: rotateY(180deg);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .phone-image-container {
+            position: relative;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(180deg, var(--light-gray) 0%, var(--pure-white) 100%);
+        }
+
+        .phone-image {
+            max-height: 280px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+            cursor: zoom-in;
+        }
+
+        .phone-image.zoomed {
+            transform: scale(1.8);
+            cursor: zoom-out;
+        }
+
+        .phone-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-red);
+            color: var(--pure-white);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 3;
+        }
+
+        .phone-controls {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .control-btn {
+            width: 45px;
+            height: 45px;
+            background: var(--pure-white);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .control-btn:hover {
+            background: var(--primary-red);
+            color: var(--pure-white);
+            transform: scale(1.1);
+        }
+
+        .control-btn i {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .control-btn:hover i {
+            color: var(--pure-white);
+        }
+
+        .phone-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .phone-brand {
+            color: var(--primary-red);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .phone-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .phone-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+
+        /* ===== الوجه الخلفي للكارت ===== */
+        .phone-back-content {
+            text-align: center;
+            color: var(--pure-white);
+        }
+
+        .phone-back-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .phone-specs {
+            text-align: right;
+            margin-bottom: 25px;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .spec-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .spec-text {
+            font-size: 0.9rem;
+        }
+
+        .phone-back-btn {
+            background: var(--pure-white);
+            color: var(--primary-red);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .phone-back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== Swiper تخصيصات ===== */
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--primary-red);
+            opacity: 1;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            width: 55px;
+            height: 55px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.2rem;
+            color: var(--primary-red);
+            font-weight: 900;
+        }
+
+        /* ===== نافذة العرض المكبر ===== */
+        .zoom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .zoom-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .zoom-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .zoom-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 20px;
+            transform: scale(0.8);
+            transition: transform 0.5s ease;
+        }
+
+        .zoom-modal.active .zoom-image {
+            transform: scale(1);
+        }
+
+        .zoom-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: var(--primary-red);
+            color: var(--pure-white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .zoom-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+        }
+
+        .zoom-control-btn {
+            background: var(--pure-white);
+            color: var(--text-dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .zoom-control-btn:hover {
+            background: var(--primary-red);
+            color: var(--pure-white);
+        }
+
+        .zoom-info {
+            position: absolute;
+            bottom: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: var(--pure-white);
+        }
+
+        .zoom-phone-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* ===== قسم الخدمات ===== */
+        .services-section {
+            background: var(--pure-white);
+            padding: 100px 0;
         }
 
         .service-card {
@@ -461,134 +741,42 @@
             margin: 0;
         }
 
-        /* ===== قسم المنتجات ===== */
-        .products-section {
-            background: var(--pure-white);
-            padding: 100px 0;
-        }
-
-        .product-card {
-            background: var(--pure-white);
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.4s ease;
-            border: 1px solid var(--light-gray);
-            height: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow-medium);
-            border-color: transparent;
-        }
-
-        .product-image {
+        /* ===== قسم الإحصائيات ===== */
+        .stats-section {
+            background: var(--gradient-red);
+            padding: 80px 0;
             position: relative;
-            background: linear-gradient(145deg, var(--light-gray) 0%, var(--pure-white) 100%);
-            padding: 30px;
-            text-align: center;
             overflow: hidden;
         }
 
-        .product-image::before {
+        .stats-section::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: var(--gradient-red);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            transform: rotate(45deg);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .product-card:hover .product-image::before {
-            opacity: 0.1;
-        }
-
-        .product-image img {
-            max-height: 220px;
-            width: auto;
-            object-fit: contain;
-            transition: transform 0.4s ease;
+        .stat-item {
+            text-align: center;
             position: relative;
             z-index: 2;
         }
 
-        .product-card:hover .product-image img {
-            transform: scale(1.1) rotate(-3deg);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--gradient-red);
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
             color: var(--pure-white);
-            padding: 8px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            z-index: 3;
-        }
-
-        .product-content {
-            padding: 25px;
-        }
-
-        .product-brand {
-            color: var(--primary-red);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .product-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-dark);
+            line-height: 1;
             margin-bottom: 10px;
         }
 
-        .product-description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary-red);
-        }
-
-        .product-btn {
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-red);
-            border: none;
-            border-radius: 12px;
-            color: var(--pure-white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .product-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 20px rgba(227, 24, 55, 0.4);
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
         }
 
         /* ===== قسم من نحن ===== */
@@ -723,45 +911,7 @@
             margin: 0;
         }
 
-        /* ===== قسم الإحصائيات ===== */
-        .stats-section {
-            background: var(--gradient-red);
-            padding: 80px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .stat-item {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--pure-white);
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-
-        /* ===== قسم اتصل بنا ===== */
+        /* ===== قسم التواصل ===== */
         .contact-section {
             background: var(--pure-white);
             padding: 100px 0;
@@ -846,12 +996,9 @@
             color: var(--pure-white);
         }
 
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-
         .footer-logo img {
             height: 60px;
+            margin-bottom: 20px;
         }
 
         .footer-text {
@@ -937,11 +1084,6 @@
         .footer-bottom a {
             color: var(--primary-red);
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-bottom a:hover {
-            color: var(--light-red);
         }
 
         /* ===== زر العودة للأعلى ===== */
@@ -975,67 +1117,7 @@
             transform: translateY(-5px);
         }
 
-        /* ===== الاستجابة للشاشات ===== */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-phone-main {
-                width: 250px;
-            }
-            
-            .hero-phone-side {
-                width: 180px;
-            }
-            
-            .about-content {
-                padding-right: 0;
-                margin-top: 50px;
-            }
-            
-            .about-floating-card {
-                display: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 120px 0 60px;
-                min-height: auto;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-phone-container {
-                margin-top: 40px;
-            }
-            
-            .hero-phone-side {
-                display: none;
-            }
-            
-            .hero-buttons .btn {
-                margin: 10px 5px;
-                padding: 12px 25px;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== تأثيرات التمرير ===== */
+        /* ===== تأثيرات الظهور ===== */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -1046,10 +1128,38 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ===== الاستجابة ===== */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.5rem; }
+            .phones-orbit { height: 400px; }
+            .orbit-phone { width: 120px; }
+            .about-content { padding-right: 0; margin-top: 50px; }
+            .about-floating-card { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section { padding: 120px 0 60px; min-height: auto; }
+            .hero-title { font-size: 2rem; }
+            .phones-orbit { height: 300px; }
+            .orbit-phone { width: 100px; }
+            .orbit-phone:nth-child(1) { transform: translate(-50%, -50%) rotateY(0deg) translateZ(120px); }
+            .orbit-phone:nth-child(2) { transform: translate(-50%, -50%) rotateY(72deg) translateZ(120px); }
+            .orbit-phone:nth-child(3) { transform: translate(-50%, -50%) rotateY(144deg) translateZ(120px); }
+            .orbit-phone:nth-child(4) { transform: translate(-50%, -50%) rotateY(216deg) translateZ(120px); }
+            .orbit-phone:nth-child(5) { transform: translate(-50%, -50%) rotateY(288deg) translateZ(120px); }
+            .hero-buttons .btn { margin: 10px 5px; padding: 12px 25px; }
+            .section-title { font-size: 2rem; }
+            .stat-number { font-size: 2.5rem; }
+            .about-features { grid-template-columns: 1fr; }
+            .brand-tabs { gap: 10px; }
+            .brand-tab { padding: 10px 20px; font-size: 0.9rem; }
+            .phone-3d-card { height: 450px; }
+        }
     </style>
 </head>
 <body>
-    <!-- شريط التنقل العلوي -->
+    <!-- شريط التنقل -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -1061,8 +1171,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link active" href="#">الرئيسية</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">خدماتنا</a></li>
                     <li class="nav-item"><a class="nav-link" href="#products">المنتجات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">خدماتنا</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">من نحن</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">اتصل بنا</a></li>
                 </ul>
@@ -1075,24 +1185,24 @@
         </div>
     </nav>
 
-    <!-- قسم البطل الرئيسي -->
+    <!-- قسم البطل مع عرض دائري للجوالات -->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <div class="hero-content">
-                        <span class="hero-badge animate__animated animate__fadeInDown">
+                        <span class="hero-badge">
                             <i class="fas fa-star me-2"></i>أفضل متجر إلكترونيات في صنعاء
                         </span>
-                        <h1 class="hero-title animate__animated animate__fadeInUp">
+                        <h1 class="hero-title">
                             مرحباً بك في <span>الجعدبي فون</span>
                         </h1>
-                        <p class="hero-description animate__animated animate__fadeInUp animate__delay-1s">
+                        <p class="hero-description">
                             شريكك التقني الموثوق لصيانة وبيع أحدث الجوالات والإلكترونيات. خدمات احترافية، أسعار منافسة، وجودة لا مثيل لها.
                         </p>
-                        <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s">
-                            <a href="#services" class="btn btn-primary-custom">
-                                <i class="fas fa-rocket me-2"></i>اكتشف خدماتنا
+                        <div class="hero-buttons">
+                            <a href="#products" class="btn btn-primary-custom">
+                                <i class="fas fa-mobile-alt me-2"></i>تصفح الجوالات
                             </a>
                             <a href="#contact" class="btn btn-outline-custom">
                                 <i class="fas fa-phone-alt me-2"></i>تواصل معنا
@@ -1100,14 +1210,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="hero-image">
-                        <div class="hero-phone-container">
-                            <div class="hero-decoration"></div>
-                            <!-- صور جوالات حديثة -->
-                            <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 15 Pro" class="hero-phone-main">
-                            <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=300&q=80" alt="Samsung Galaxy" class="hero-phone-side hero-phone-left">
-                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=300&q=80" alt="iPhone" class="hero-phone-side hero-phone-right">
+                <div class="col-lg-7">
+                    <div class="hero-phones-showcase">
+                        <div class="phones-orbit" id="phonesOrbit">
+                            <div class="orbit-phone">
+                                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=300&q=80" alt="iPhone 16 Pro Max">
+                            </div>
+                            <div class="orbit-phone">
+                                <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=300&q=80" alt="Samsung Galaxy">
+                            </div>
+                            <div class="orbit-phone">
+                                <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&q=80" alt="Xiaomi">
+                            </div>
+                            <div class="orbit-phone">
+                                <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=300&q=80" alt="Google Pixel">
+                            </div>
+                            <div class="orbit-phone">
+                                <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=300&q=80" alt="OnePlus">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1115,45 +1235,1261 @@
         </div>
     </section>
 
-    <!-- شريط المميزات -->
-    <section class="features-strip">
+    <!-- قسم معرض الجوالات -->
+    <section class="brands-section" id="products">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-box reveal">
-                        <div class="feature-icon">
-                            <i class="fas fa-shipping-fast"></i>
-                        </div>
-                        <h4>خدمة سريعة</h4>
-                        <p>إصلاح في نفس اليوم</p>
-                    </div>
+            <div class="section-header reveal">
+                <span class="section-badge">منتجاتنا</span>
+                <h2 class="section-title">أحدث الجوالات العالمية</h2>
+                <p class="section-subtitle">تشكيلة واسعة من أفضل العلامات التجارية - اضغط للتقليب والتكبير</p>
+            </div>
+
+            <!-- تبويبات العلامات التجارية -->
+            <div class="brand-tabs reveal">
+                <div class="brand-tab active" data-brand="apple">
+                    <i class="fab fa-apple"></i>
+                    <span>Apple</span>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-box reveal">
-                        <div class="feature-icon">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <h4>جودة مضمونة</h4>
-                        <p>ضمان على جميع الخدمات</p>
-                    </div>
+                <div class="brand-tab" data-brand="samsung">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Samsung</span>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-box reveal">
-                        <div class="feature-icon">
-                            <i class="fas fa-hand-holding-usd"></i>
-                        </div>
-                        <h4>أسعار منافسة</h4>
-                        <p>أفضل الأسعار في السوق</p>
-                    </div>
+                <div class="brand-tab" data-brand="xiaomi">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Xiaomi</span>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="feature-box reveal">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
+                <div class="brand-tab" data-brand="google">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </div>
+                <div class="brand-tab" data-brand="oneplus">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>OnePlus</span>
+                </div>
+            </div>
+
+            <!-- معرض Apple -->
+            <div class="phones-gallery active" id="apple-gallery">
+                <div class="swiper swiper-phones">
+                    <div class="swiper-wrapper">
+                        <!-- iPhone 16 Pro Max -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="iPhone 16 Pro Max">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">جديد 2025</span>
+                                            <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 16 Pro Max" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Apple</span>
+                                            <h4 class="phone-name">iPhone 16 Pro Max</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">معالج A18 Pro</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 48MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.9 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية تدوم طوال اليوم</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn">
+                                                <i class="fas fa-arrow-right me-2"></i>العودة
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h4>دعم متواصل</h4>
-                        <p>خدمة عملاء متميزة</p>
+                        <!-- iPhone 16 Pro -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="iPhone 16 Pro">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">الأكثر مبيعاً</span>
+                                            <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400&q=80" alt="iPhone 16 Pro" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Apple</span>
+                                            <h4 class="phone-name">iPhone 16 Pro</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">معالج A18 Pro</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 48MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.3 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">شحن سريع</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- iPhone 16 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="iPhone 16">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=400&q=80" alt="iPhone 16" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Apple</span>
+                                            <h4 class="phone-name">iPhone 16</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">معالج A18</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 48MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.1 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية قوية</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- iPhone 15 Pro Max -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="iPhone 15 Pro Max">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1696446701796-da61225697cc?w=400&q=80" alt="iPhone 15 Pro Max" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Apple</span>
+                                            <h4 class="phone-name">iPhone 15 Pro Max</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">معالج A17 Pro</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 48MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.7 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-video"></i></div>
+                                                    <span class="spec-text">تصوير ProRes</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- iPhone SE -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="iPhone SE 4">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">سعر مميز</span>
+                                            <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=400&q=80" alt="iPhone SE" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Apple</span>
+                                            <h4 class="phone-name">iPhone SE 4</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">معالج A18</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 48MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.1 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-dollar-sign"></i></div>
+                                                    <span class="spec-text">سعر اقتصادي</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <!-- معرض Samsung -->
+            <div class="phones-gallery" id="samsung-gallery">
+                <div class="swiper swiper-phones">
+                    <div class="swiper-wrapper">
+                        <!-- Samsung S25 Ultra -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Galaxy S25 Ultra">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">جديد 2025</span>
+                                            <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&q=80" alt="Samsung Galaxy S25 Ultra" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Samsung</span>
+                                            <h4 class="phone-name">Galaxy S25 Ultra</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Elite</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 200MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.9 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-pen"></i></div>
+                                                    <span class="spec-text">قلم S Pen مدمج</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Samsung S25+ -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Galaxy S25+">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=400&q=80" alt="Samsung Galaxy S25+" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Samsung</span>
+                                            <h4 class="phone-name">Galaxy S25+</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Elite</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.7 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية 4900mAh</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Samsung S25 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Galaxy S25">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=400&q=80" alt="Samsung Galaxy S25" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Samsung</span>
+                                            <h4 class="phone-name">Galaxy S25</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Elite</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.2 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-robot"></i></div>
+                                                    <span class="spec-text">Galaxy AI</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Samsung Z Fold 6 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Galaxy Z Fold 6">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">قابل للطي</span>
+                                            <img src="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=400&q=80" alt="Samsung Z Fold" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Samsung</span>
+                                            <h4 class="phone-name">Galaxy Z Fold 6</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Gen 3</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 7.6 بوصة داخلية</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-clone"></i></div>
+                                                    <span class="spec-text">تصميم قابل للطي</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-pen"></i></div>
+                                                    <span class="spec-text">يدعم S Pen</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Samsung A55 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Galaxy A55">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">سعر مميز</span>
+                                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Samsung Galaxy A55" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Samsung</span>
+                                            <h4 class="phone-name">Galaxy A55 5G</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Exynos 1480</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.6 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية 5000mAh</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <!-- معرض Xiaomi -->
+            <div class="phones-gallery" id="xiaomi-gallery">
+                <div class="swiper swiper-phones">
+                    <div class="swiper-wrapper">
+                        <!-- Xiaomi 15 Ultra -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Xiaomi 15 Ultra">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">جديد 2025</span>
+                                            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&q=80" alt="Xiaomi 15 Ultra" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Xiaomi</span>
+                                            <h4 class="phone-name">Xiaomi 15 Ultra</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Elite</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا Leica 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.73 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                                    <span class="spec-text">شحن 90W</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Xiaomi 15 Pro -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Xiaomi 15 Pro">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=400&q=80" alt="Xiaomi 15 Pro" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Xiaomi</span>
+                                            <h4 class="phone-name">Xiaomi 15 Pro</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Elite</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا Leica 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.73 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية 6100mAh</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Xiaomi 15 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Xiaomi 15">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400&q=80" alt="Xiaomi 15" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Xiaomi</span>
+                                            <h4 class="phone-name">Xiaomi 15</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Elite</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا Leica 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.36 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية 5240mAh</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Redmi Note 14 Pro+ -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Redmi Note 14 Pro+">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">الأكثر مبيعاً</span>
+                                            <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=400&q=80" alt="Redmi Note 14 Pro+" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Xiaomi</span>
+                                            <h4 class="phone-name">Redmi Note 14 Pro+</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 7s Gen 3</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 200MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.67 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                                    <span class="spec-text">شحن 120W</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- POCO F6 Pro -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="POCO F6 Pro">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">أداء عالي</span>
+                                            <img src="https://images.unsplash.com/photo-1580910051074-3eb694886f8b?w=400&q=80" alt="POCO F6 Pro" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">POCO</span>
+                                            <h4 class="phone-name">POCO F6 Pro</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Gen 2</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.67 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                                    <span class="spec-text">شحن 120W</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <!-- معرض Google -->
+            <div class="phones-gallery" id="google-gallery">
+                <div class="swiper swiper-phones">
+                    <div class="swiper-wrapper">
+                        <!-- Pixel 10 Pro -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Pixel 10 Pro">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">جديد 2025</span>
+                                            <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&q=80" alt="Google Pixel 10 Pro" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Google</span>
+                                            <h4 class="phone-name">Pixel 10 Pro</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Tensor G5</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.3 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-robot"></i></div>
+                                                    <span class="spec-text">Gemini AI</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pixel 9 Pro -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Pixel 9 Pro">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=400&q=80" alt="Google Pixel 9 Pro" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Google</span>
+                                            <h4 class="phone-name">Pixel 9 Pro</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Tensor G4</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.3 أو 6.8 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية 24+ ساعة</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pixel 9 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Pixel 9">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400&q=80" alt="Google Pixel 9" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Google</span>
+                                            <h4 class="phone-name">Pixel 9</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Tensor G4</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP + 48MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.3 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-magic"></i></div>
+                                                    <span class="spec-text">Magic Editor AI</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pixel 9a -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Pixel 9a">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">سعر مميز</span>
+                                            <img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=400&q=80" alt="Google Pixel 9a" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Google</span>
+                                            <h4 class="phone-name">Pixel 9a</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Tensor G4</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 48MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.3 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-shield-alt"></i></div>
+                                                    <span class="spec-text">7 سنوات تحديثات</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pixel 9 Pro Fold -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="Pixel 9 Pro Fold">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">قابل للطي</span>
+                                            <img src="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=400&q=80" alt="Pixel 9 Pro Fold" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">Google</span>
+                                            <h4 class="phone-name">Pixel 9 Pro Fold</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Tensor G4</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 8 بوصة داخلية</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-clone"></i></div>
+                                                    <span class="spec-text">تصميم قابل للطي</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-memory"></i></div>
+                                                    <span class="spec-text">16GB RAM</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+
+            <!-- معرض OnePlus -->
+            <div class="phones-gallery" id="oneplus-gallery">
+                <div class="swiper swiper-phones">
+                    <div class="swiper-wrapper">
+                        <!-- OnePlus 13 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="OnePlus 13">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">جديد 2025</span>
+                                            <img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400&q=80" alt="OnePlus 13" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">OnePlus</span>
+                                            <h4 class="phone-name">OnePlus 13</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Elite</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا Hasselblad 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.82 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                                    <span class="spec-text">شحن 100W</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- OnePlus 12 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="OnePlus 12">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <img src="https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=400&q=80" alt="OnePlus 12" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">OnePlus</span>
+                                            <h4 class="phone-name">OnePlus 12</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Gen 3</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.82 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-battery-full"></i></div>
+                                                    <span class="spec-text">بطارية 5400mAh</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- OnePlus Nord 4 -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="OnePlus Nord 4">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">سعر مميز</span>
+                                            <img src="https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=400&q=80" alt="OnePlus Nord 4" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">OnePlus</span>
+                                            <h4 class="phone-name">OnePlus Nord 4</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 7+ Gen 3</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا 50MP</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 6.74 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                                    <span class="spec-text">شحن 100W</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- OnePlus Open -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="OnePlus Open">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">قابل للطي</span>
+                                            <img src="https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=400&q=80" alt="OnePlus Open" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">OnePlus</span>
+                                            <h4 class="phone-name">OnePlus Open</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Gen 2</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    <span class="spec-text">شاشة 7.82 بوصة داخلية</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-clone"></i></div>
+                                                    <span class="spec-text">تصميم قابل للطي</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-camera"></i></div>
+                                                    <span class="spec-text">كاميرا Hasselblad</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- OnePlus Ace 3 Pro -->
+                        <div class="swiper-slide">
+                            <div class="phone-3d-card" data-phone="OnePlus Ace 3 Pro">
+                                <div class="phone-3d-inner">
+                                    <div class="phone-front">
+                                        <div class="phone-image-container">
+                                            <span class="phone-badge">للألعاب</span>
+                                            <img src="https://images.unsplash.com/photo-1580910051074-3eb694886f8b?w=400&q=80" alt="OnePlus Ace 3 Pro" class="phone-image">
+                                            <div class="phone-controls">
+                                                <button class="control-btn zoom-btn" title="تكبير"><i class="fas fa-search-plus"></i></button>
+                                                <button class="control-btn flip-btn" title="تقليب"><i class="fas fa-sync-alt"></i></button>
+                                                <button class="control-btn rotate-btn" title="تدوير"><i class="fas fa-redo"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="phone-content">
+                                            <span class="phone-brand">OnePlus</span>
+                                            <h4 class="phone-name">OnePlus Ace 3 Pro</h4>
+                                            <span class="phone-price">اتصل للسعر</span>
+                                        </div>
+                                    </div>
+                                    <div class="phone-back">
+                                        <div class="phone-back-content">
+                                            <h4 class="phone-back-title">المواصفات</h4>
+                                            <div class="phone-specs">
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-microchip"></i></div>
+                                                    <span class="spec-text">Snapdragon 8 Gen 3</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-gamepad"></i></div>
+                                                    <span class="spec-text">تبريد متقدم للألعاب</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-expand"></i></div>
+                                                    
+\<Streaming stoppped because the conversation grew too long for this model\>
+                                                        <span class="spec-text">شاشة 6.74 بوصة</span>
+                                                </div>
+                                                <div class="spec-item">
+                                                    <div class="spec-icon"><i class="fas fa-bolt"></i></div>
+                                                    <span class="spec-text">شحن 150W</span>
+                                                </div>
+                                            </div>
+                                            <button class="phone-back-btn flip-back-btn"><i class="fas fa-arrow-right me-2"></i>العودة</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
@@ -1164,145 +2500,63 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-badge">خدماتنا</span>
-                <h2 class="section-title">خدمات متكاملة تحت سقف واحد</h2>
-                <p class="section-subtitle">نقدم لك باقة شاملة من الخدمات التقنية بأيدي خبراء متخصصين</p>
+                <h2 class="section-title">نقدم لك أفضل الخدمات</h2>
+                <p class="section-subtitle">حلول متكاملة لجميع احتياجاتك التقنية</p>
             </div>
+            
             <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card reveal">
-                        <div class="service-icon-wrapper">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>خدمات الجوالات</h3>
-                        <p>فك شفرة، تعريب، تفعيل شبكات، تحديث أنظمة التشغيل لجميع أنواع الجوالات.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card reveal">
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="service-card">
                         <div class="service-icon-wrapper">
                             <i class="fas fa-tools"></i>
                         </div>
-                        <h3>صيانة احترافية</h3>
-                        <p>إصلاح شاشات، بطاريات، سماعات، وجميع أعطال الجوالات واللابتوبات.</p>
+                        <h3>صيانة الجوالات</h3>
+                        <p>إصلاح شامل لجميع أنواع الجوالات، تغيير شاشات، بطاريات، وإصلاح أعطال البرامج.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card reveal">
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="service-card">
                         <div class="service-icon-wrapper">
-                            <i class="fas fa-laptop-code"></i>
+                            <i class="fas fa-laptop"></i>
                         </div>
-                        <h3>تنصيب البرامج</h3>
-                        <p>تثبيت ويندوز، ماك أو إس، وجميع البرامج للكمبيوتر والجوالات.</p>
+                        <h3>صيانة اللابتوبات</h3>
+                        <p>إصلاح جميع أنواع اللابتوبات، تركيب قطع غيار أصلية، وصيانة البرامج.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card reveal">
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="service-card">
                         <div class="service-icon-wrapper">
-                            <i class="fas fa-palette"></i>
+                            <i class="fas fa-code"></i>
                         </div>
-                        <h3>التصميم الجرافيكي</h3>
-                        <p>تصميم شعارات، هويات تجارية، بوسترات، ومحتوى سوشيال ميديا.</p>
+                        <h3>برمجة وتحديث</h3>
+                        <p>تحديث الأنظمة، فك القيود، تركيب التطبيقات، واسترجاع البيانات.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card reveal">
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>بيع الجوالات</h3>
+                        <p>أحدث الجوالات من أفضل العلامات التجارية بضمان وأسعار منافسة.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <i class="fas fa-headphones-alt"></i>
+                        </div>
+                        <h3>الإكسسوارات</h3>
+                        <p>تشكيلة واسعة من الإكسسوارات الأصلية: سماعات، شواحن، كفرات.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 reveal">
+                    <div class="service-card">
                         <div class="service-icon-wrapper">
                             <i class="fas fa-print"></i>
                         </div>
-                        <h3>الطباعة والتصوير</h3>
-                        <p>طباعة مستندات، صور، تصوير وثائق، وتغليف حراري احترافي.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card reveal">
-                        <div class="service-icon-wrapper">
-                            <i class="fas fa-download"></i>
-                        </div>
-                        <h3>نسخ وتحميل</h3>
-                        <p>نسخ أفلام، مسلسلات، وأنظمة تشغيل على فلاش أو هارد ديسك.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم المنتجات -->
-    <section class="products-section" id="products">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-badge">منتجاتنا</span>
-                <h2 class="section-title">أحدث الجوالات والإكسسوارات</h2>
-                <p class="section-subtitle">تشكيلة واسعة من أحدث الموديلات العالمية بأسعار تنافسية</p>
-            </div>
-            <div class="row g-4">
-                <!-- منتج 1 - iPhone -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card reveal">
-                        <div class="product-image">
-                            <span class="product-badge">جديد</span>
-                            <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 16 Pro Max">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-brand">Apple</span>
-                            <h4 class="product-title">iPhone 16 Pro Max</h4>
-                            <p class="product-description">أحدث إصدار من آبل بكاميرا 48MP وشريحة A18 Pro</p>
-                            <div class="product-footer">
-                                <span class="product-price">اتصل للسعر</span>
-                                <button class="product-btn"><i class="fas fa-shopping-bag"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- منتج 2 - Samsung -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card reveal">
-                        <div class="product-image">
-                            <span class="product-badge">الأكثر مبيعاً</span>
-                            <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&q=80" alt="Samsung Galaxy S25 Ultra">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-brand">Samsung</span>
-                            <h4 class="product-title">Galaxy S25 Ultra</h4>
-                            <p class="product-description">هاتف رائد بقلم S Pen وكاميرا 200MP</p>
-                            <div class="product-footer">
-                                <span class="product-price">اتصل للسعر</span>
-                                <button class="product-btn"><i class="fas fa-shopping-bag"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- منتج 3 - سماعات -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card reveal">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&q=80" alt="سماعات لاسلكية">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-brand">إكسسوارات</span>
-                            <h4 class="product-title">سماعات AirPods Pro</h4>
-                            <p class="product-description">سماعات لاسلكية بخاصية إلغاء الضوضاء</p>
-                            <div class="product-footer">
-                                <span class="product-price">اتصل للسعر</span>
-                                <button class="product-btn"><i class="fas fa-shopping-bag"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- منتج 4 - شواحن -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card reveal">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80" alt="شواحن وإكسسوارات">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-brand">إكسسوارات</span>
-                            <h4 class="product-title">شواحن سريعة وكفرات</h4>
-                            <p class="product-description">مجموعة متنوعة من الإكسسوارات الأصلية</p>
-                            <div class="product-footer">
-                                <span class="product-price">أسعار متنوعة</span>
-                                <button class="product-btn"><i class="fas fa-shopping-bag"></i></button>
-                            </div>
-                        </div>
+                        <h3>طباعة وتصميم</h3>
+                        <p>خدمات الطباعة والتصميم الجرافيكي بأحدث التقنيات.</p>
                     </div>
                 </div>
             </div>
@@ -1313,28 +2567,28 @@
     <section class="stats-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <div class="stat-item reveal">
-                        <div class="stat-number">5000+</div>
+                <div class="col-md-3 col-6 reveal">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="5000">0</div>
                         <div class="stat-label">عميل سعيد</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <div class="stat-item reveal">
-                        <div class="stat-number">10+</div>
+                <div class="col-md-3 col-6 reveal">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="10000">0</div>
+                        <div class="stat-label">جهاز تم إصلاحه</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 reveal">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="8">0</div>
                         <div class="stat-label">سنوات خبرة</div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-                    <div class="stat-item reveal">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">خدمة متنوعة</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="stat-item reveal">
-                        <div class="stat-number">99%</div>
-                        <div class="stat-label">نسبة رضا العملاء</div>
+                <div class="col-md-3 col-6 reveal">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="50">0</div>
+                        <div class="stat-label">علامة تجارية</div>
                     </div>
                 </div>
             </div>
@@ -1345,25 +2599,25 @@
     <section class="about-section" id="about">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="col-lg-6">
                     <div class="about-image-wrapper reveal">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="متجر الجعدبي فون" class="about-image-main">
+                        <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&q=80" alt="متجر الجعدبي فون" class="about-image-main">
                         <div class="about-floating-card top-card">
-                            <div class="floating-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="floating-text">
-                                <h4>5000+</h4>
-                                <p>عميل راضٍ</p>
-                            </div>
-                        </div>
-                        <div class="about-floating-card bottom-card">
                             <div class="floating-icon">
                                 <i class="fas fa-award"></i>
                             </div>
                             <div class="floating-text">
-                                <h4>10+</h4>
-                                <p>سنوات تميز</p>
+                                <h4>+8</h4>
+                                <p>سنوات خبرة</p>
+                            </div>
+                        </div>
+                        <div class="about-floating-card bottom-card">
+                            <div class="floating-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="floating-text">
+                                <h4>+5000</h4>
+                                <p>عميل راضٍ</p>
                             </div>
                         </div>
                     </div>
@@ -1372,46 +2626,49 @@
                     <div class="about-content reveal">
                         <div class="section-header">
                             <span class="section-badge">من نحن</span>
-                            <h2 class="section-title">لماذا تختار الجعدبي فون؟</h2>
+                            <h2 class="section-title">الجعدبي فون - شريكك التقني</h2>
                         </div>
                         <p class="about-text">
-                            انطلق "الجعدبي فون" من شغف حقيقي بعالم التكنولوجيا ورغبة في تقديم حلول متكاملة وموثوقة في قلب صنعاء. نحن نؤمن بأن التكنولوجيا يجب أن تكون سهلة ومتاحة للجميع، ونسعى كل يوم لتحقيق ذلك من خلال خدماتنا المتميزة.
+                            نحن متجر متخصص في صيانة وبيع الجوالات والإلكترونيات في صنعاء. نقدم خدمات احترافية منذ أكثر من 8 سنوات، مع التزامنا بالجودة والأمانة.
+                        </p>
+                        <p class="about-text">
+                            فريقنا من الفنيين المحترفين يضمن لك أفضل خدمة بأسعار منافسة وضمان حقيقي على جميع الخدمات.
                         </p>
                         <div class="about-features">
                             <div class="about-feature-item">
                                 <div class="about-feature-icon">
-                                    <i class="fas fa-shield-alt"></i>
+                                    <i class="fas fa-check-circle"></i>
                                 </div>
                                 <div class="about-feature-text">
-                                    <h5>خبرة موثوقة</h5>
-                                    <p>فريق من الخبراء المتخصصين</p>
+                                    <h5>ضمان حقيقي</h5>
+                                    <p>ضمان على جميع الخدمات</p>
                                 </div>
                             </div>
                             <div class="about-feature-item">
                                 <div class="about-feature-icon">
-                                    <i class="fas fa-gem"></i>
+                                    <i class="fas fa-bolt"></i>
                                 </div>
                                 <div class="about-feature-text">
-                                    <h5>جودة عالية</h5>
-                                    <p>قطع غيار أصلية ومضمونة</p>
+                                    <h5>خدمة سريعة</h5>
+                                    <p>إصلاح في نفس اليوم</p>
                                 </div>
                             </div>
                             <div class="about-feature-item">
                                 <div class="about-feature-icon">
-                                    <i class="fas fa-clock"></i>
+                                    <i class="fas fa-hand-holding-usd"></i>
                                 </div>
                                 <div class="about-feature-text">
-                                    <h5>سرعة التنفيذ</h5>
-                                    <p>إصلاح سريع في نفس اليوم</p>
+                                    <h5>أسعار منافسة</h5>
+                                    <p>أفضل الأسعار في السوق</p>
                                 </div>
                             </div>
                             <div class="about-feature-item">
                                 <div class="about-feature-icon">
-                                    <i class="fas fa-hand-holding-heart"></i>
+                                    <i class="fas fa-headset"></i>
                                 </div>
                                 <div class="about-feature-text">
-                                    <h5>أسعار عادلة</h5>
-                                    <p>أفضل سعر مع أعلى جودة</p>
+                                    <h5>دعم فني</h5>
+                                    <p>متاحون دائماً لمساعدتك</p>
                                 </div>
                             </div>
                         </div>
@@ -1421,14 +2678,15 @@
         </div>
     </section>
 
-    <!-- قسم اتصل بنا -->
+    <!-- قسم التواصل -->
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-badge">تواصل معنا</span>
-                <h2 class="section-title">نسعد بخدمتكم</h2>
-                <p class="section-subtitle">تفضل بزيارتنا أو تواصل معنا في أي وقت</p>
+                <h2 class="section-title">نحن هنا لخدمتك</h2>
+                <p class="section-subtitle">تواصل معنا عبر أي من الطرق التالية</p>
             </div>
+            
             <div class="row g-4">
                 <div class="col-lg-5">
                     <div class="contact-card reveal">
@@ -1438,7 +2696,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>العنوان</h4>
-                                <p>صنعاء - عصر - شارع التوفير هايبر</p>
+                                <p>صنعاء - الستين الشمالي</p>
                             </div>
                         </div>
                         <div class="contact-info-item">
@@ -1446,18 +2704,17 @@
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div class="contact-details">
-                                <h4>أرقام التواصل</h4>
-                                <a href="tel:773634367">773 634 367</a><br>
-                                <a href="tel:783044000">783 044 000</a>
+                                <h4>الهاتف</h4>
+                                <a href="tel:773634367">773634367</a>
                             </div>
                         </div>
                         <div class="contact-info-item">
                             <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fab fa-whatsapp"></i>
                             </div>
                             <div class="contact-details">
-                                <h4>البريد الإلكتروني</h4>
-                                <a href="mailto:aljadebiphone@gmail.com">aljadebiphone@gmail.com</a>
+                                <h4>واتساب</h4>
+                                <a href="https://wa.me/967773634367">967773634367+</a>
                             </div>
                         </div>
                         <div class="contact-info-item">
@@ -1466,14 +2723,14 @@
                             </div>
                             <div class="contact-details">
                                 <h4>ساعات العمل</h4>
-                                <p>السبت - الخميس: 9 صباحاً - 10 مساءً</p>
+                                <p>السبت - الخميس: 9 ص - 10 م</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="map-container reveal">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.008888888889!2d44.20666666666666!3d15.354166666666666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDIxJzE1LjAiTiA0NMKwMTInMjQuMCJF!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3846.8!2d44.2!3d15.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDIxJzAwLjAiTiA0NMKwMTInMDAuMCJF!5e0!3m2!1sar!2s!4v1700000000000!5m2!1sar!2s" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -1484,114 +2741,189 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="col-lg-4 col-md-6 mb-4">
                     <div class="footer-logo">
-                        <img src="https://via.placeholder.com/180x55/E31837/FFFFFF?text=ALJADEBI+PHONE" alt="الجعدبي فون">
+                        <img src="https://via.placeholder.com/180x55/FFFFFF/E31837?text=ALJADEBI+PHONE" alt="الجعدبي فون">
                     </div>
-                    <p class="footer-text">
-                        شريكك التقني الموثوق في صنعاء. نقدم خدمات صيانة احترافية وبيع أحدث الإلكترونيات بأسعار تنافسية.
-                    </p>
+                    <p class="footer-text">شريكك التقني الموثوق في صنعاء. نقدم أفضل خدمات صيانة وبيع الجوالات والإلكترونيات.</p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">روابط سريعة</h5>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h4 class="footer-title">روابط سريعة</h4>
                     <ul class="footer-links">
                         <li><a href="#">الرئيسية</a></li>
-                        <li><a href="#services">خدماتنا</a></li>
                         <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#services">الخدمات</a></li>
                         <li><a href="#about">من نحن</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-                    <h5 class="footer-title">خدماتنا</h5>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">خدماتنا</h4>
                     <ul class="footer-links">
                         <li><a href="#">صيانة الجوالات</a></li>
-                        <li><a href="#">فك الشفرات</a></li>
-                        <li><a href="#">التصميم الجرافيكي</a></li>
-                        <li><a href="#">الطباعة والتصوير</a></li>
+                        <li><a href="#">صيانة اللابتوبات</a></li>
+                        <li><a href="#">برمجة وتحديث</a></li>
+                        <li><a href="#">طباعة وتصميم</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-4">
-                    <h5 class="footer-title">تواصل معنا</h5>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h4 class="footer-title">تواصل معنا</h4>
                     <ul class="footer-links">
-                        <li><a href="tel:773634367"><i class="fas fa-phone-alt me-2"></i>773 634 367</a></li>
-                        <li><a href="tel:783044000"><i class="fas fa-phone-alt me-2"></i>783 044 000</a></li>
-                        <li><a href="mailto:aljadebiphone@gmail.com"><i class="fas fa-envelope me-2"></i>aljadebiphone@gmail.com</a></li>
+                        <li><a href="tel:773634367"><i class="fas fa-phone me-2"></i>773634367</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt me-2"></i>صنعاء - الستين الشمالي</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 الجعدبي فون | Aljadebi Phone. جميع الحقوق محفوظة.</p>
-                <p>تصميم وتطوير: <a href="https://github.com/engloayaljadebi">لؤي الجعدبي</a></p>
+                <p>© 2025 الجعدبي فون - Aljadebi Phone. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
 
     <!-- زر العودة للأعلى -->
     <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+        <i class="fas fa-chevron-up"></i>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- نافذة التكبير -->
+    <div class="zoom-modal" id="zoomModal">
+        <div class="zoom-content">
+            <button class="zoom-close" id="zoomClose"><i class="fas fa-times"></i></button>
+            <img src="" alt="" class="zoom-image" id="zoomImage">
+            <div class="zoom-controls">
+                <button class="zoom-control-btn" id="zoomIn"><i class="fas fa-plus"></i></button>
+                <button class="zoom-control-btn" id="zoomOut"><i class="fas fa-minus"></i></button>
+            </div>
+            <div class="zoom-info">
+                <h4 class="zoom-phone-name" id="zoomPhoneName"></h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <script>
-        // تأثيرات التمرير
-        window.addEventListener('scroll', function() {
-            // شريط التنقل
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            // زر العودة للأعلى
-            const backToTop = document.getElementById('backToTop');
-            if (window.scrollY > 500) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
-            
-            // تأثيرات الظهور
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    element.classList.add('active');
-                }
+        // تهيئة Swiper
+        document.querySelectorAll('.swiper-phones').forEach(el => {
+            new Swiper(el, {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
             });
         });
-        
+
+        // تبديل العلامات التجارية
+        document.querySelectorAll('.brand-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.phones-gallery').forEach(g => g.classList.remove('active'));
+                document.getElementById(this.dataset.brand + '-gallery').classList.add('active');
+            });
+        });
+
+        // تقليب الكروت
+        document.querySelectorAll('.flip-btn').forEach(btn => {
+            btn.addEventListener('click', () => btn.closest('.phone-3d-card').classList.toggle('flipped'));
+        });
+        document.querySelectorAll('.flip-back-btn').forEach(btn => {
+            btn.addEventListener('click', () => btn.closest('.phone-3d-card').classList.remove('flipped'));
+        });
+
+        // التكبير
+        const zoomModal = document.getElementById('zoomModal');
+        const zoomImage = document.getElementById('zoomImage');
+        const zoomPhoneName = document.getElementById('zoomPhoneName');
+        let zoomLevel = 1;
+
+        document.querySelectorAll('.zoom-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.phone-3d-card');
+                const img = card.querySelector('.phone-image');
+                zoomImage.src = img.src;
+                zoomPhoneName.textContent = card.dataset.phone;
+                zoomModal.classList.add('active');
+                zoomLevel = 1;
+            });
+        });
+
+        document.getElementById('zoomClose').addEventListener('click', () => zoomModal.classList.remove('active'));
+        zoomModal.addEventListener('click', e => { if (e.target === zoomModal) zoomModal.classList.remove('active'); });
+
+        document.getElementById('zoomIn').addEventListener('click', () => {
+            zoomLevel = Math.min(3, zoomLevel + 0.3);
+            zoomImage.style.transform = `scale(${zoomLevel})`;
+        });
+        document.getElementById('zoomOut').addEventListener('click', () => {
+            zoomLevel = Math.max(0.5, zoomLevel - 0.3);
+            zoomImage.style.transform = `scale(${zoomLevel})`;
+        });
+
+        // تدوير الصورة
+        document.querySelectorAll('.rotate-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const img = this.closest('.phone-image-container').querySelector('.phone-image');
+                let rotation = parseInt(img.dataset.rotation || 0) + 90;
+                img.dataset.rotation = rotation;
+                img.style.transform = `rotate(${rotation}deg)`;
+            });
+        });
+
+        // العداد
+        const counters = document.querySelectorAll('.stat-number');
+        const observerOptions = { threshold: 0.5 };
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.dataset.count);
+                    let current = 0;
+                    const increment = target / 100;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        counter.textContent = Math.floor(current);
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        }
+                    }, 20);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // تأثير الظهور
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => revealObserver.observe(el));
+
         // زر العودة للأعلى
-        document.getElementById('backToTop').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('show', window.scrollY > 300);
+            document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 100);
         });
-        
-        // تفعيل تأثيرات الظهور عند التحميل
-        document.addEventListener('DOMContentLoaded', function() {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                
-                if (elementTop < windowHeight) {
-                    element.classList.add('active');
-                }
-            });
-        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // إيقاف الدوران عند التمرير
+        const orbit = document.getElementById('phonesOrbit');
+        orbit.addEventListener('mouseenter', () => orbit.style.animationPlayState = 'paused');
+        orbit.addEventListener('mouseleave', () => orbit.style.animationPlayState = 'running');
     </script>
 </body>
 </html>
